@@ -60,3 +60,17 @@ rs.initiate({
       {_id: 2, host: "localhost:27103"} 
     ] 
   })
+
+Para permitir operaciones de consulta si el cluster ha entrado en modo SECONDARY
+
+A los miembros le pasamos la configuración:
+
+rs.secondaryOk()
+
+Además a nivel de API en mongoose hay que añadir:
+
+Opción connectWithNoPrimary
+
+Y en la URI añadir la opción
+
+readPreference=<valor>
