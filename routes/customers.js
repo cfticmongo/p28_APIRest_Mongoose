@@ -1,9 +1,22 @@
 const express = require('express');
 const { ErrorHandler } = require('../middleware/errors');
 const app = express();
-const {getCustomers, createCustomer, updateCustomer} = require('../services/customers');
+const {getCustomers, createCustomer, updateCustomer, searchCustomers} = require('../services/customers');
 
-app.get('/:skip/:limit', async (req, res, next) => {
+
+app.get('/search/:term', async (req, res, next) => {
+    try {
+        const {documents} = await searchCustomers(req.params.term);
+        res.status(200).json({
+            message: "ok",
+            customers: documents
+        })
+    } catch(err) {
+        return next(err);
+    }
+})
+
+app.get('/pagination/:skip/:limit', async (req, res, next) => {
     try {
         if(isNaN(Number(req.params.skip)) || isNaN(Number(req.params.limit))) {
             throw new ErrorHandler(400, 'skip & limit params must be numbers');
@@ -18,6 +31,8 @@ app.get('/:skip/:limit', async (req, res, next) => {
         return next(err);
     }
 })
+
+
 
 app.post('/',  async (req, res, next) => {
     try {
