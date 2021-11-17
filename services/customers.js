@@ -4,7 +4,14 @@ const { ErrorHandler } = require('../middleware/errors');
 
 const searchCustomers = async (term) => {
     try {
-        const documents = await Customer.find({name: {$regex: term, $options: 'i'}});
+        const diacricticRegex = (value) => {
+            return value.replace(/a/g, '[a,á,à,ä]')
+                        .replace(/e/g, '[e,é,è,ë]')
+                        .replace(/i/g, '[i,í,ï]')
+                        .replace(/o/g, '[o,ó,ö,ò]')
+        }
+
+        const documents = await Customer.find({name: {$regex: diacricticRegex(term), $options: 'i'}});
         return {
             documents
         }
