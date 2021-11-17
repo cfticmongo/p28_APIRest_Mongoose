@@ -1,4 +1,5 @@
 const Customer = require('../models/customer');
+const { ErrorHandler } = require('../middleware/errors');
 
 const getCustomers = async () => {
     try {
@@ -7,7 +8,9 @@ const getCustomers = async () => {
             documents
         }
     } catch(err) {
-        // gestionaremos el error
+        if(err) {
+            throw new ErrorHandler(500, 'Database server error')
+        }
     }
 }
 
@@ -28,7 +31,11 @@ const createCustomer = async (customerData) => {
             document
         }
     } catch(err) {
-        // gestionaremos el error
+        if(err.code === 11000) {
+            throw new ErrorHandler(400, 'Duplicate cif')
+        } else {
+            throw new ErrorHandler(500, 'Database server error')
+        }
     }
 }
 
@@ -39,7 +46,11 @@ const updateCustomer = async (_id, customerData) => {
             document
         }
     } catch(err) {
-         // gestionaremos el error
+        if(err.code === 11000) {
+            throw new ErrorHandler(400, 'Duplicate cif')
+        } else {
+            throw new ErrorHandler(500, 'Database server error')
+        }
     }
 }
 

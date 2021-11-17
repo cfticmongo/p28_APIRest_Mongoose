@@ -1,10 +1,12 @@
 const mongoose = require('mongoose');
 
 const CustomerSchema = new mongoose.Schema({
-    name: String,
+    name: {
+        type: String,
+    },
     cif: {
         type: String,
-        unique: true
+        unique: true,
     },
     email: String,
     orderNumbers: Number,
