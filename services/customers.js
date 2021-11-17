@@ -1,10 +1,12 @@
 const Customer = require('../models/customer');
 const { ErrorHandler } = require('../middleware/errors');
 
-const getCustomers = async () => {
+const getCustomers = async (skip, limit) => {
     try {
-        const documents = await Customer.find({})
+        const totalDocuments = await Customer.find({}).countDocuments();
+        const documents = await Customer.find({}).sort({name: 1}).skip(skip).limit(limit);
         return {
+            totalDocuments,
             documents
         }
     } catch(err) {

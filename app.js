@@ -1,11 +1,13 @@
 const express = require('express');
 const dotenv = require('dotenv');
 const mongoose = require('mongoose');
+const cors = require('cors');
+
 const { ErrorHandler } = require('./middleware/errors');
 
 const app = express();
 dotenv.config();
-
+app.use(cors()); // Sin objeto de opciones cors() acepta todas las peticiones
 const port = process.env.PORT;
 
 const customers = require('./routes/customers');
