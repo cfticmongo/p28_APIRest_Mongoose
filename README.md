@@ -78,7 +78,18 @@ readPreference=<valor>
 ## Colección de artículos
 
 let articles = [
-    { "brand": "Adidas", "model": "VS Pace", "description": "Lorem ipsum donor", "colors": ["negro", "blanco", "blanco-rojo", "blanco-azul"], "sizes": ["39", "40", "41", "42", "43", "44"], "price": 70, "currentPrice": 35, "tags": ["lifestyle", "piel", "outlet"], "gender": "hombre", "pic": "https://i.ibb.co/Kh4w8XC/1.jpg" },
+    { 
+        "brand": "Adidas", 
+        "model": "VS Pace", 
+        "description": "Lorem ipsum donor", 
+        "colors": ["negro", "blanco", "blanco-rojo", "blanco-azul"], 
+        "sizes": ["39", "40", "41", "42", "43", "44"], 
+        "price": 70, 
+        "currentPrice": 35, 
+        "tags": ["lifestyle", "piel", "outlet"], 
+        "gender": "hombre", 
+        "pic": "https://i.ibb.co/Kh4w8XC/1.jpg" 
+    },
     { "brand": "Adidas", "model": "Grand Court", "description": "Lorem ipsum donor", "colors": ["blanco", "blanco-celeste", "blanco-negro"], "sizes": ["35", "36", "37", "38", "39", "40"], "price": 75, "currentPrice": 55, "tags": ["lifestyle", "piel"], "gender": "mujer", "pic": "https://i.ibb.co/HH9yRts/2.jpg" },
     { "brand": "Adidas", "model": "Xtreme", "description": "Lorem ipsum donor", "colors": ["negro", "azul", "rojo"], "sizes": ["41", "42", "43", "44"], "price": 90, "currentPrice": 80, "tags": ["running"], "gender": "hombre", "pic": "https://i.ibb.co/H4chd3c/3.jpg" },
     { "brand": "New Balance", "model": "Day", "description": "Lorem ipsum donor", "colors": ["negro", "blanco", "blanco-rojo", "blanco-azul"], "sizes": ["39", "40", "41", "42", "43", "44"], "price": 70, "currentPrice": 40, "tags": ["lifestyle", "outlet"], "gender": "hombre", "pic": "https://i.ibb.co/P6tjSG8/4.jpg" },
@@ -88,3 +99,7 @@ let articles = [
     { "brand": "Nike", "model": "Revolution", "description": "Lorem ipsum donor", "colors": ["negro", "blanco", "rojo", "azul"], "sizes": ["39", "40", "41", "42", "43", "44"], "price": 70, "currentPrice": 50, "tags": ["running"], "gender": "hombre", "pic": "https://i.ibb.co/r3049Jz/8.jpg" },
     { "brand": "Nike", "model": "Revolution", "description": "Lorem ipsum donor", "colors": ["negro", "blanco", "rojo", "azul"], "sizes": ["34", "45", "36", "37", "38"], "price": 60, "currentPrice": 40, "tags": ["running", "lifestyle"], "gender": "niño", "pic": "https://i.ibb.co/Ps2WB3R/9.jpg" },
 ]
+
+use app
+
+db.articles.insert(articles)

@@ -10,6 +10,7 @@ dotenv.config();
 app.use(cors()); // Sin objeto de opciones cors() acepta todas las peticiones
 const port = process.env.PORT || 3000;
 
+const articles = require('./routes/articles');
 const customers = require('./routes/customers');
 const { setErrorResponse } = require('./middleware/errors');
 
@@ -30,6 +31,7 @@ mongoose.connect(mongoURI, options)
 app.use(express.json()); // Parsea todos los JSON del body de los mensajes de entrada y continua la ejecución
 app.use(express.urlencoded({extended: true})); // Idem con el formato urlencoded
 
+app.use('/articles', articles);
 app.use('/customers', customers);
 // Resto de rutas de la API
 
