@@ -14,6 +14,7 @@ const port = process.env.PORT || 3000;
 
 const articles = require('./routes/articles');
 const customers = require('./routes/customers');
+const users = require('./routes/users');
 const { setErrorResponse } = require('./middleware/errors');
 
 const mongoURI = 'mongodb://localhost:27001,localhost:27002,localhost:27003/app?replicaSet=clusterGetafe&readPreference=primaryPreferred';
@@ -61,6 +62,7 @@ app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerSpecs, {customCss: 
 
 app.use('/articles', articles);
 app.use('/customers', customers);
+app.use('/users', users);
 // Resto de rutas de la API
 
 app.use('/*', () => {
