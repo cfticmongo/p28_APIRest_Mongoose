@@ -8,14 +8,14 @@ const { ErrorHandler } = require('./middleware/errors');
 const app = express();
 dotenv.config();
 app.use(cors()); // Sin objeto de opciones cors() acepta todas las peticiones
-const port = process.env.PORT;
+const port = process.env.PORT || 3000;
 
 const customers = require('./routes/customers');
 const { setErrorResponse } = require('./middleware/errors');
 
-// const mongoURI = 'mongodb://localhost:27101,localhost:27102,localhost:27103/app?replicaSet=clusterGetafe&readPreference=primaryPreferred';
+const mongoURI = 'mongodb://localhost:27001,localhost:27002,localhost:27003/app?replicaSet=clusterGetafe&readPreference=primaryPreferred';
 // const mongoURI = 'mongodb://localhost:27017/app'; // Servidor independiente
-const mongoURI = process.env.MONGOURI;
+// const mongoURI = process.env.MONGOURI;
 const options = {
     useNewUrlParser: true,
     // replicaSet: 'clusterGetafe', // Para versiones anteriores a Mongoose 6
