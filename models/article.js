@@ -9,7 +9,7 @@ const ArticleSchema = new mongoose.Schema({
     price: Number,
     currentPrice: Number,
     tags: Array,
-    gender: Array,
+    gender: String,
     pic: String
 }, {versionKey: false})
 
