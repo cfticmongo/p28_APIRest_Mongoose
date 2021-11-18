@@ -3,6 +3,67 @@ const { ErrorHandler } = require('../middleware/errors');
 const app = express();
 const {getCustomers, createCustomer, updateCustomer, searchCustomers} = require('../services/customers');
 
+/** 
+* @swagger
+* tags:
+*   name: Customers
+*   description: Customers API Rest lorem ipsum...
+*/
+
+/**
+* @swagger
+*   components:
+*       schemas:
+*           Customer:
+*               type: object
+*               required:
+*                   - name
+*                   - cif
+*                   - email
+*               properties:
+*                   _id:
+*                       type: ObjectId()
+*                       description: MongoDB unique identifier
+*                   name:
+*                       type: string
+*                       description: customer name
+*                   cif:
+*                       type: string
+*                       description: legal customer identifier
+*                   adress:
+*                       type: string
+*                       description: customer address
+*                   cp:
+*                       type: string
+*                       description: customer postal code
+*                   city:
+*                       type: string
+*                       description: customer address city       
+*/
+
+/**
+* @swagger
+* /customers/search/{term}:
+*   get: 
+*       summary: return customers matched by name
+*       tags: [Customers]
+*       parameters:
+*           - in: path
+*             name: term
+*             schema:
+*               type: string
+*             required: true
+*             description: string fragment to be used in regex to match customer by name field
+*       produces:
+*           - application/json
+*       responses:
+*           200:
+*               description: 'json response {customers: <array-customers> | []}'
+*           400:
+*               description: 'term param mandatory error'
+*           500:
+*               description: 'general database error'
+*/
 
 app.get('/search/:term', async (req, res, next) => {
     try {
@@ -15,6 +76,7 @@ app.get('/search/:term', async (req, res, next) => {
         return next(err);
     }
 })
+
 
 app.get('/pagination/:skip/:limit', async (req, res, next) => {
     try {

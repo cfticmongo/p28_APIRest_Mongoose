@@ -103,3 +103,7 @@ let articles = [
 use app
 
 db.articles.insert(articles)
+
+## Documentación APIRest con swagger
+
+npm i swagger-jsdoc swagger-ui-express
