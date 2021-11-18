@@ -8,8 +8,9 @@ class ErrorHandler extends Error { // Creamos una clase propia ErrorHandler que 
 }
 
 const setErrorResponse = (err, res) => {
+    const errorMessage = err.message + ' see http://localhost:3000/api-docs/';
     res.status(err.statusCode).json({
-        message: err.message
+        message: errorMessage
         //..
     })
 }
